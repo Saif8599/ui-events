@@ -14,7 +14,7 @@
 body {
   margin: 2rem;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 2rem;
   background: var(--secondary);
 }
@@ -31,12 +31,12 @@ a {
   border-radius: var(--pill);
   font-weight: normal;
   text-decoration: none;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: var(--primary);
     border-color: var(--primary);
   }
 }
-
 
 /* UI Event Classes */
 
@@ -79,5 +79,81 @@ a:nth-of-type(12) {
   }
 }
 
-
 /* Hieronder komen jouw animaties */
+
+.changeBackgroundColor {
+  animation-name: changeBackgroundColor;
+  animation-duration: 1.2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background: red;
+  }
+  30% {
+    background: green;
+  }
+  60% {
+    background: blue;
+  }
+  100% {
+    background: red;
+  }
+}
+
+.spinButton {
+  animation-name: spinButton;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes spinButton {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(120deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+  color: var(--secondary);
+  background-color: var(--highlight-secondary);
+}
+
+@keyframes move-out {
+  from {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.moveOut {
+  animation-name: move-out;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+::view-transition-old(:root) {
+  animation: 0.4s move-out both;
+}
+
+::view-transition-new(:root) {
+  animation: 1s move-in;
+}
